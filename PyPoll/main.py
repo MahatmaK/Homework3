@@ -16,7 +16,9 @@ with open(csvfile, newline ='') as csv_file:
     next(csvreader)
 
     for row in csvreader:
-
+        
+        # Counting total votes
+        total_votes = total_votes + 1
 
         condition = False
         
@@ -37,16 +39,18 @@ with open(csvfile, newline ='') as csv_file:
 
 
 candidates.sort(reverse=True)
-print(candidates)
 
- print("Election Results")
- print("-------------------------")
- print(f'Total Votes: {total_votes}')
- print("-------------------------")
+print("")
+print("Election Results")
+print("-------------------------")
+print(f'Total Votes: {total_votes}')
+print("-------------------------")
 
- for candidate in candidates:
-     print(f'{candidate[1]}: {round(candidate[0]/total_votes,3)}% ({candidate[0]})')
-
+for candidate in candidates:
+    print(f'{candidate[1]}: {100*candidate[0]/total_votes:.3f}% ({candidate[0]})')
+print("-------------------------")
+print(f'Winner: {candidates[0][1]}')
+print("-------------------------")
 
 
 
