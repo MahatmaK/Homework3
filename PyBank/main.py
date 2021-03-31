@@ -18,7 +18,7 @@ increase_profit = 0
 decrease_profit = 0
 
 # Open the csv file
-with open('03-Python_Homework_Instructions_PyBank_Resources_budget_data.csv', newline='') as csv_file:
+with open('03-Python_Homework_Instructions_PyBank_Resources_budget_data.csv', 'r', newline='') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter =',')
 
     # skip first row
