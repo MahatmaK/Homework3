@@ -59,10 +59,9 @@ with open('03-Python_Homework_Instructions_PyBank_Resources_budget_data.csv', ne
     final_change = round(avg_change / (total_months - 1),2)   
     
     
-    # Print("Financial Analysis", "----------------------------",sep="\n")  If I wanted to print in one function but decided against it   
-    
-    
-    
+
+# Print("Financial Analysis", "----------------------------",sep="\n")  If I wanted to print in one function but decided against it    
+
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total Months: {total_months}")
@@ -72,16 +71,16 @@ print(f"Greatest Increase in Profits: {increase_month} (${increase_profit})")
 print(f"Greatest Decrease in Profits: {decrease_month} (${decrease_profit})")
 
 # Write csv file
-output_path = os.path.join("..", "analysis", "main.csv" )
+output_path = os.path.join("analysis", "main.csv" )
 
 with open(output_path, 'w', newline='') as writefile:
 
-    csvwriter = csv.writer(writefile, delimiter=',')
+    csvwriter = csv.writer(writefile)
 
-    csvwriter.writerow("Financial Analysis")
-    csvwriter.writerow("----------------------------")
-    csvwriter.writerow(f"Total Months: {total_months}")
-    csvwriter.writerow(f"Total : ${total_profit}")
-    csvwriter.writerow(f"Average Change: ${final_change}")
-    csvwriter.writerow(f"Greatest Increase in Profits: {increase_month} (${increase_profit})")
-    csvwriter.writerow(f"Greatest Decrease in Profits: {decrease_month} (${decrease_profit})")
+    csvwriter.writerow(["Financial Analysis"])
+    csvwriter.writerow(["----------------------------"])
+    csvwriter.writerow([f"Total Months: {total_months}"])
+    csvwriter.writerow([f"Total : ${total_profit}"])
+    csvwriter.writerow([f"Average Change: ${final_change}"])
+    csvwriter.writerow([f"Greatest Increase in Profits: {increase_month} (${increase_profit})"])
+    csvwriter.writerow([f"Greatest Decrease in Profits: {decrease_month} (${decrease_profit})"])
