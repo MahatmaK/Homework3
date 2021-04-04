@@ -5,24 +5,31 @@ import csv
 # Variable for total votes
 total_votes = 0
 
-# Array of candidates
+# Create blank array of candidates. 'candidates' will be a list of candidates and their total votes. The first index of each unique candidate is the number of votes they earned. The second index is the candidate name. The reason for this is to making sorting the winner by the most votes easier later in the code. 
 candidates =[]
 
+# Open csv file process
 csvfile = os.path.join('03-Python_Homework_Instructions_PyPoll_Resources_election_data.csv')
 
 with open(csvfile, 'r', newline ='') as csv_file:
     csvreader = csv.reader(csv_file,delimiter = ',')
     
-    next(csvreader)
+    # Store column headers
+    headers = []
+    for row in csvreader:
+        num_of_cols = len(row)
+        for x in range(0,num_of_cols):
+            headers.append(row[x])
+        break           
 
+    # 'for' loop to calculate required outputs
     for row in csvreader:
         
         # Counting total votes
         total_votes = total_votes + 1
-
-        condition = False
-        
+       
         # If candidate is already in candidates array then add 1 to their vote 
+        condition = False
         for candidate in candidates:
             if candidate[1] == row[2]:
                 candidate[0] = candidate[0] + 1
