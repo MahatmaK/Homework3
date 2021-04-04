@@ -21,14 +21,17 @@ decrease_profit = 0
 with open('03-Python_Homework_Instructions_PyBank_Resources_budget_data.csv', 'r', newline='') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter =',')
 
-    # skip first row
-    next(csv_file)
+    # Storing header row
+    for row in csv_reader:
+        date = row[0]
+        profit_loss = row[1]
+        headers = [date, profit_loss]
+        break
 
     csv_reader = list(csv_reader)
     previous_profit = int(csv_reader[0][1])
+    
     # The 'for' loop calculate
-    
-    
     for row in csv_reader:
         
         current_profit = int(row[1])
@@ -60,7 +63,7 @@ with open('03-Python_Homework_Instructions_PyBank_Resources_budget_data.csv', 'r
     
     
 
-# Print("Financial Analysis", "----------------------------",sep="\n")  If I wanted to print in one function but decided against it    
+# print("Financial Analysis", "----------------------------",sep="\n")  If I wanted to print in one function but decided against it    
 
 print("Financial Analysis")
 print("----------------------------")
