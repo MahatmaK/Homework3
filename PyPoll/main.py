@@ -20,7 +20,7 @@ with open(csvfile, 'r', newline ='') as csv_file:
         num_of_cols = len(row)
         for x in range(0,num_of_cols):
             headers.append(row[x])
-        break           
+        break           git 
 
     # 'for' loop to calculate required outputs
     for row in csvreader:
@@ -44,9 +44,10 @@ with open(csvfile, 'r', newline ='') as csv_file:
 
 
 
-
+# Sort candidates from highest vote getter to lowest vote getter
 candidates.sort(reverse=True)
 
+# Print results as requested
 print("")
 print("Election Results")
 print("-------------------------")
@@ -59,6 +60,7 @@ print("-------------------------")
 print(f'Winner: {candidates[0][1]}')
 print("-------------------------")
 
+# Write reults to csv file located in analysis folder
 csvpath = os.path.join('analysis','main.csv')
 
 with open(csvpath,'w', newline='') as csvfile:
