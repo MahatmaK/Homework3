@@ -9,10 +9,10 @@ total_votes = 0
 candidates =[]
 
 # Open csv file process
-csvfile = os.path.join('03-Python_Homework_Instructions_PyPoll_Resources_election_data.csv')
+csvpath = os.path.join('Resources','03-Python_Homework_Instructions_PyPoll_Resources_election_data.csv')
 
-with open(csvfile, 'r', newline ='') as csv_file:
-    csvreader = csv.reader(csv_file,delimiter = ',')
+with open(csvpath, 'r', newline ='') as csvfile:
+    csvreader = csv.reader(csvfile,delimiter = ',')
     
     # Store column headers
     headers = []
@@ -20,8 +20,8 @@ with open(csvfile, 'r', newline ='') as csv_file:
         num_of_cols = len(row)
         for x in range(0,num_of_cols):
             headers.append(row[x])
-        break           git 
-
+        break      
+    
     # 'for' loop to calculate required outputs
     for row in csvreader:
         
@@ -61,19 +61,19 @@ print(f'Winner: {candidates[0][1]}')
 print("-------------------------")
 
 # Write reults to csv file located in analysis folder
-csvpath = os.path.join('analysis','main.csv')
+csvpath = os.path.join('Analysis','main.csv')
 
 with open(csvpath,'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile,delimiter=',')
     csvwriter.writerow(["Election Results"])
     csvwriter.writerow(["-------------------------"])
-    csvwriter.writerow([f'Total Votes: {total_votes}'])
+    csvwriter.writerow(['Total Votes:',total_votes])
     csvwriter.writerow(["-------------------------"])
 
     for candidate in candidates:
-        csvwriter.writerow([f'{candidate[1]}: {100*candidate[0]/total_votes:.3f}% ({candidate[0]})'])
+        csvwriter.writerow([f'{candidate[1]}', f'{100*candidate[0]/total_votes:.3f}% ({candidate[0]})'])
     csvwriter.writerow(["-------------------------"])
-    csvwriter.writerow([f'Winner: {candidates[0][1]}'])
+    csvwriter.writerow(['Winner:',f'{candidates[0][1]}'])
     csvwriter.writerow(["-------------------------"])
 
 
