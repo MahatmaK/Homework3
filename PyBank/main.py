@@ -18,7 +18,9 @@ increase_profit = 0
 decrease_profit = 0
 
 # Open the csv file
-with open('03-Python_Homework_Instructions_PyBank_Resources_budget_data.csv', 'r', newline='') as csv_file:
+csvpath = os.path.join('Resources','03-Python_Homework_Instructions_PyBank_Resources_budget_data.csv')
+
+with open(csvpath, 'r', newline='') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter =',')
 
     # Storing header row
@@ -74,7 +76,7 @@ print(f"Greatest Increase in Profits: {increase_month} (${increase_profit})")
 print(f"Greatest Decrease in Profits: {decrease_month} (${decrease_profit})")
 
 # Write csv file
-output_path = os.path.join("analysis", "main.csv" )
+output_path = os.path.join("Analysis", "main.csv" )
 
 with open(output_path, 'w', newline='') as writefile:
 
@@ -82,8 +84,8 @@ with open(output_path, 'w', newline='') as writefile:
 
     csvwriter.writerow(["Financial Analysis"])
     csvwriter.writerow(["----------------------------"])
-    csvwriter.writerow([f"Total Months: {total_months}"])
-    csvwriter.writerow([f"Total : ${total_profit}"])
-    csvwriter.writerow([f"Average Change: ${final_change}"])
-    csvwriter.writerow([f"Greatest Increase in Profits: {increase_month} (${increase_profit})"])
-    csvwriter.writerow([f"Greatest Decrease in Profits: {decrease_month} (${decrease_profit})"])
+    csvwriter.writerow(["Total Months:",total_months])
+    csvwriter.writerow(["Total :",f'${total_profit}'])
+    csvwriter.writerow(["Average Change:",f'${final_change}'])
+    csvwriter.writerow(["Greatest Increase in Profits:" ,f'{increase_month} (${increase_profit})'])
+    csvwriter.writerow(["Greatest Decrease in Profits:" ,f'{decrease_month} (${decrease_profit})'])
